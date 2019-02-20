@@ -14,7 +14,8 @@ public class TelegramSeviceImpl extends TelegramLongPollingBot  implements Teleg
 	{	
 		if (update.hasMessage() && update.getMessage().hasText())
 		{
-			text = "blabla";
+			String name = update.getMessage().getFrom().getFirstName() +" "+ update.getMessage().getFrom().getLastName();
+			text = "Ciao, "+ name;
 			
 			long chat_ID = update.getMessage().getChatId();
 			SendMessage sender = new SendMessage(chat_ID,text);
@@ -26,6 +27,11 @@ public class TelegramSeviceImpl extends TelegramLongPollingBot  implements Teleg
 			{
 				e.printStackTrace();
 			}
+			
+			String txtlog = update.getMessage().getText();
+			System.out.println(name +" "+ txtlog);
+			
+			
 		}
     }
 	
